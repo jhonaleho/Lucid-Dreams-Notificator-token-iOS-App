@@ -63,12 +63,9 @@ struct DreamListView: View {
                                 Text(dream.content)
                                     .lineLimit(2)
                                 
-                                Text(
-                                    dream.createdAt,
-                                    style: .date
-                                )
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
+                                Text(dream.createdAt.formatted(date: .numeric, time: .shortened))
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
                             }
                             
                             .swipeActions {
