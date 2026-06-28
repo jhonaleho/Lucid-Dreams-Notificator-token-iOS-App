@@ -52,45 +52,55 @@ struct DreamListView: View {
                         
                         ForEach(viewModel.dreams) { dream in
                             
-                            VStack(
-                                alignment: .leading,
-                                spacing: 8
-                            ) {
-                                
-                                Text(dream.title)
-                                    .font(.headline)
-                                
-                                Text(dream.content)
-                                    .lineLimit(2)
-                                
-                                Text(dream.createdAt.formatted(date: .numeric, time: .shortened))
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
                             
-                            .swipeActions {
+                            NavigationLink {
                                 
-                                Button {
+                                DreamDocumentView(
+                                    dream: dream
+                                )
+                                
+                            } label: {
+                                
+                                VStack(
+                                    alignment: .leading,
+                                    spacing: 8
+                                ) {
                                     
-                                    editorMode = .edit(dream)
+                                    Text(dream.title)
+                                        .font(.headline)
                                     
-                                } label: {
+                                    Text(dream.content)
+                                        .lineLimit(2)
                                     
-                                    Label("Edit", systemImage: "pencil")
-                                    
+                                    Text(dream.createdAt.formatted(date: .numeric, time: .shortened))
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
                                 }
-                                .tint(.blue)
                                 
-                                Button(role: .destructive) {
+                                .swipeActions {
                                     
-                                    if let index = viewModel.dreams.firstIndex(where: { $0.id == dream.id }) {
-                                        viewModel.dreams.remove(at: index)
+                                    Button {
+                                        
+                                        editorMode = .edit(dream)
+                                        
+                                    } label: {
+                                        
+                                        Label("Edit", systemImage: "pencil")
+                                        
                                     }
+                                    .tint(.blue)
                                     
-                                } label: {
-                                    
-                                    Label("Delete", systemImage: "trash")
-                                    
+                                    Button(role: .destructive) {
+                                        
+                                        if let index = viewModel.dreams.firstIndex(where: { $0.id == dream.id }) {
+                                            viewModel.dreams.remove(at: index)
+                                        }
+                                        
+                                    } label: {
+                                        
+                                        Label("Delete", systemImage: "trash")
+                                        
+                                    }
                                 }
                             }
                         }
