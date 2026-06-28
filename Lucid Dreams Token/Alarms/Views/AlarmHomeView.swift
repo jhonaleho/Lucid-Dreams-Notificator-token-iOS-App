@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct AlarmHomeView: View {
     
     @State private var timesPerDay: Double = 5
     @State private var scheduledAlarmCount: Int = 0
@@ -100,5 +100,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    AlarmHomeView()
 }

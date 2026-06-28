@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0699FA402FE3A05500D58EB7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0699FA3F2FE3A05500D58EB7 /* FirebaseAuth */; };
+		0699FA422FE3A05500D58EB7 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0699FA412FE3A05500D58EB7 /* FirebaseCore */; };
+		0699FA442FE3A05500D58EB7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0699FA432FE3A05500D58EB7 /* FirebaseFirestore */; };
+		0699FA472FE3A11B00D58EB7 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 0699FA462FE3A11B00D58EB7 /* GoogleSignIn */; };
+		0699FA492FE3A11B00D58EB7 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0699FA482FE3A11B00D58EB7 /* GoogleSignInSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		065B598C2FD8C9F60063F247 /* Lucid Dreams Token.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lucid Dreams Token.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +31,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0699FA492FE3A11B00D58EB7 /* GoogleSignInSwift in Frameworks */,
+				0699FA422FE3A05500D58EB7 /* FirebaseCore in Frameworks */,
+				0699FA472FE3A11B00D58EB7 /* GoogleSignIn in Frameworks */,
+				0699FA402FE3A05500D58EB7 /* FirebaseAuth in Frameworks */,
+				0699FA442FE3A05500D58EB7 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,11 @@
 			);
 			name = "Lucid Dreams Token";
 			packageProductDependencies = (
+				0699FA3F2FE3A05500D58EB7 /* FirebaseAuth */,
+				0699FA412FE3A05500D58EB7 /* FirebaseCore */,
+				0699FA432FE3A05500D58EB7 /* FirebaseFirestore */,
+				0699FA462FE3A11B00D58EB7 /* GoogleSignIn */,
+				0699FA482FE3A11B00D58EB7 /* GoogleSignInSwift */,
 			);
 			productName = "Lucid Dreams Token";
 			productReference = 065B598C2FD8C9F60063F247 /* Lucid Dreams Token.app */;
@@ -76,7 +94,7 @@
 		065B59842FD8C9F60063F247 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2650;
 				TargetAttributes = {
@@ -94,6 +112,10 @@
 			);
 			mainGroup = 065B59832FD8C9F60063F247;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0699FA3E2FE3A05500D58EB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0699FA452FE3A11B00D58EB7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 065B598D2FD8C9F60063F247 /* Products */;
 			projectDirPath = "";
@@ -254,6 +276,7 @@
 				DEVELOPMENT_TEAM = 96UW8JT9CP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lucid-Dreams-Token-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -286,6 +309,7 @@
 				DEVELOPMENT_TEAM = 96UW8JT9CP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lucid-Dreams-Token-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -330,6 +354,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0699FA3E2FE3A05500D58EB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.15.0;
+			};
+		};
+		0699FA452FE3A11B00D58EB7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0699FA3F2FE3A05500D58EB7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0699FA3E2FE3A05500D58EB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0699FA412FE3A05500D58EB7 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0699FA3E2FE3A05500D58EB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		0699FA432FE3A05500D58EB7 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0699FA3E2FE3A05500D58EB7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0699FA462FE3A11B00D58EB7 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0699FA452FE3A11B00D58EB7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		0699FA482FE3A11B00D58EB7 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0699FA452FE3A11B00D58EB7 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 065B59842FD8C9F60063F247 /* Project object */;
 }
