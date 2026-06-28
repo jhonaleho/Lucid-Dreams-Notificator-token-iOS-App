@@ -27,6 +27,29 @@ final class DreamViewModel: ObservableObject {
 
         dreams[index] = updatedDream
     }
+    func saveDream(
+        dream: DreamEntry?,
+        title: String,
+        content: String
+    ) {
+
+        let finalTitle = title.isEmpty ? "Untitled Dream" : title
+
+        if var existingDream = dream {
+
+            existingDream.title = finalTitle
+            existingDream.content = content
+
+            updateDream(existingDream)
+
+        } else {
+
+            addDream(
+                title: finalTitle,
+                content: content
+            )
+        }
+    }
 
     func deleteDream(at offsets: IndexSet) {
 

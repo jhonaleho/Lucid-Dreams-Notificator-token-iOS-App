@@ -46,7 +46,9 @@ struct DreamEditorView: View {
                         .frame(minHeight: 200)
                 }
             }
-            .navigationTitle("New Dream")
+            .navigationTitle(
+                dream == nil ? "New Dream" : "Edit Dream"
+            )
             .toolbar {
                 
                 ToolbarItem(placement: .topBarLeading) {
@@ -62,8 +64,9 @@ struct DreamEditorView: View {
                             return
                         }
                         
-                        viewModel.addDream(
-                            title: title.isEmpty ? "Untitled Dream" : title,
+                        viewModel.saveDream(
+                            dream: dream,
+                            title: title,
                             content: content
                         )
                         
