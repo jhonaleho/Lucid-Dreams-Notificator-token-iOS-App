@@ -5,3 +5,8 @@
 //  Created by jhonalejo zh on 28/6/26.
 //
 
+import Foundation
+
+final class LocalDreamStore {
+
+}
