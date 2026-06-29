@@ -1,12 +1,11 @@
-//
-//  SwiftDataDreamStore.swift
-//  Lucid Dreams Token
-//
-//  Created by jhonalejo zh on 28/6/26.
-//
-
+import SwiftData
 import Foundation
 
 final class LocalDreamStore {
 
+    private let context: ModelContext
+
+    init(context: ModelContext) {
+        self.context = context
+    }
 }

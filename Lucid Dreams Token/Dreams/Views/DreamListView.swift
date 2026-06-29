@@ -23,7 +23,8 @@ struct DreamListView: View {
             }
         }
     }
-    @StateObject private var viewModel = DreamViewModel()
+    @ObservedObject
+    var viewModel: DreamViewModel
     
     
     @State private var editorMode: EditorMode?

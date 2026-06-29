@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import FirebaseCore
 import GoogleSignIn
 
@@ -32,5 +33,8 @@ struct Lucid_Dreams_TokenApp: App {
                     GIDSignIn.sharedInstance.handle(url)
                 }
         }
+        .modelContainer(
+            for: DreamEntity.self
+        )
     }
 }

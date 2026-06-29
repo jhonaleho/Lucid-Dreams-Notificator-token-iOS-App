@@ -5,6 +5,12 @@ import Combine
 final class DreamViewModel: ObservableObject {
 
     @Published var dreams: [DreamEntry] = []
+    
+    private let dreamRepository: DreamRepository
+    
+    init(repository: DreamRepository){
+        self.dreamRepository = repository
+    }
 
     func addDream(
         title: String,
