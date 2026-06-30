@@ -27,7 +27,7 @@ struct Lucid_Dreams_TokenApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
                 .environmentObject(authViewModel)
                 .onOpenURL { url in
                     GIDSignIn.sharedInstance.handle(url)

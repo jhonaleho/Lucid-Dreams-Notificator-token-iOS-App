@@ -3,6 +3,15 @@ import SwiftUI
 struct MainAppView: View {
     
     @State private var selectedTab: MainTab = .alarms
+    let appContainer: AppContainer
+    @StateObject
+    private var dreamViewModel: DreamViewModel
+    
+    init(appContainer: AppContainer){
+        self.appContainer = appContainer
+        _dreamViewModel = StateObject(wrappedValue: DreamViewModel(repository: appContainer.dreamRepository))
+        
+    }
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -13,7 +22,9 @@ struct MainAppView: View {
                 }
                 .tag(MainTab.alarms)
             
-            DreamListView()
+            DreamListView(
+                viewModel: dreamViewModel
+            )
                 .tabItem {
                     Label("Sueños", systemImage: "moon.stars")
                 }

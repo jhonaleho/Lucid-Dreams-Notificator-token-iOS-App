@@ -3,11 +3,14 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var authViewModel: AuthViewModel
+    let appContainer: AppContainer
     
     var body: some View {
         Group {
             if authViewModel.isSignedIn {
-                MainAppView()
+                MainAppView(
+                    appContainer: appContainer
+                )
             } else {
                 LoginView()
             }
@@ -15,7 +18,7 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-        .environmentObject(AuthViewModel())
-}
+//#Preview {
+//    ContentView()
+//        .environmentObject(AuthViewModel())
+//}
