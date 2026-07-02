@@ -37,7 +37,6 @@ final class DreamViewModel: ObservableObject {
     func fetchDreams() {
         reloadDreams()
     }
-
     // MARK: - Operaciones de Escritura
 
     func addDream(
