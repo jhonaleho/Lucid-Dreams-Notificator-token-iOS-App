@@ -27,25 +27,31 @@ final class DreamRepository {
     }
     
     /// Sincroniza el historial remoto de Firestore hacia el almacén local.
-    /// Este método debe ser invocado al arrancar la app con sesión activa o tras un login exitoso.
+    ///
+    /// - Note: **Limitaciones de Diseño de la Fase 1 (JD-008):**
+    ///   1. *Resolución de Conflictos:* Al carecer de una propiedad `updatedAt`, no se realiza una comparación real de marcas de tiempo;
+    ///      el flujo asume de forma optimista que el dato local o remoto es consistente. Se requerirá migración del modelo en el futuro.
+    ///   2. *Borrados Remotos:* Este método no procesa eliminaciones en la nube. Si un sueño fue borrado desde otro dispositivo,
+    ///      permanecerá en el almacenamiento local. Se abordará en una historia posterior (Sincronización Avanzada).
+    ///   3. *Responsabilidad:* Actualmente centraliza descarga, mapeo y reconciliación. Si el algoritmo escala, se delegará
+    ///      en un `DreamMergePolicy` o `DreamSynchronizationService`.
     func synchronizeRemoteDreams(for userId: String) async throws {
         // 1. Descargamos los DTOs desde el servidor remoto
         let remoteDTOs = try await remoteStore.fetchDreams(for: userId)
         
-        // 2. Traemos lo que ya tenemos guardado localmente para comparar en memoria y optimizar accesos a disco
+        // 2. Traemos el estado local actual para optimizar la búsqueda en memoria mediante un Set O(1)
         let localDreams = try localStore.fetchDreams()
         let localIds = Set(localDreams.map { $0.id })
         
-        // 3. Procesamos e integramos los datos devueltos por el servidor
+        // 3. Reconciliación unidireccional básica (Remoto -> Local)
         for dto in remoteDTOs {
-            // Transformamos el DTO al modelo de dominio
             guard let remoteDream = dto.toDreamEntry() else { continue }
             
             if localIds.contains(remoteDream.id) {
-                // Idempotencia: Si ya existe localmente, actualizamos su contenido por si hubo cambios en la nube
+                // Idempotencia básica: Forzamos sobreescritura local para asegurar paridad de datos
                 try localStore.updateDream(remoteDream)
             } else {
-                // Si el sueño es nuevo para el dispositivo, lo insertamos de inmediato
+                // Registro de nueva entidad descargada
                 try localStore.addDream(remoteDream)
             }
         }
